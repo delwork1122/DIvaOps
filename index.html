@@ -104,8 +104,6 @@
   </div>
 
   <script>
-    const DEEPSEEK_API_KEY = 'sk-1e27cc4278344930a54c6e3308cbaece';
-
     function setPreset(val) {
       document.getElementById('novaInput').value = val;
       runNova();
@@ -156,12 +154,9 @@ Return ONLY a valid JSON array, no markdown, no backticks, no preamble:
 Output ONLY the JSON array.`;
 
       try {
-        const res = await fetch('https://api.deepseek.com/v1/chat/completions', {
+        const res = await fetch('/api/chat', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + DEEPSEEK_API_KEY
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             model: 'deepseek-chat',
             max_tokens: 1000,
